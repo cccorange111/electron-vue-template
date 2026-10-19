@@ -111,6 +111,7 @@ import {
   searchByName
 } from '@renderer/utils/request.ts'
 import { v4 as uuidv4 } from 'uuid'
+import Swal from 'sweetalert2'
 const searchQuery = ref('')
 const searchNameQuery = ref('')  //化合物名称的搜索 searchNameQuery
 const searchMode = ref('cas') // 当前搜索模式：'cas' 或 'rnx' 或 'literature'
@@ -124,10 +125,23 @@ const isAllSubstrate = ref(false)
 
 const router = useRouter()
 
+
+function showAlert(message, title = '提示') {
+  return Swal.fire({
+    text: message,
+    confirmButtonText: '确定',
+    confirmButtonColor: "#0056b3",
+    height:"100px",
+    width:"300px"
+  })
+}
+
 // CAS 搜索
 const searchResult = async () => {
   if (!searchQuery.value.trim()) {
-    alert('请输入搜索内容！')
+    showAlert('请输入搜索内容！').then(() => {
+  console.log('用户点击了确定')
+})
     return
   }
   const queryData = searchQuery.value.trim()
@@ -147,7 +161,9 @@ const searchResult = async () => {
 
 const searchNameResult = async () => {
   if (!searchNameQuery.value.trim()) {
-    alert('请输入搜索内容！')
+    showAlert('请输入搜索内容！').then(() => {
+  console.log('用户点击了确定')
+})
     return
   }
   const queryData = searchNameQuery.value.trim()
@@ -240,8 +256,8 @@ const _searchLiterature = async () => {
 <style scoped lang="scss">
 .search-container {
   background-image: url('@renderer/assets/background2.jpg');
-  background-position: center bottom 20%;  /* 关键修改：将背景图片下移20% */
-  background-size: 100% auto;  /* 保持宽度100%，高度自适应 */
+  background-position: center 30; 
+  background-size: 100% auto;          /* 宽度100%，高度自适应 */
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -250,6 +266,7 @@ const _searchLiterature = async () => {
   gap: 20px;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 /* CAS 搜索模式样式 */

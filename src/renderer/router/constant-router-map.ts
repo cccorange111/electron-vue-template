@@ -6,11 +6,17 @@ import searchHome from "@renderer/views/searchHome/SearchHome.vue"
 import searchLiterature from "@renderer/views/search/searchLiterature.vue"
 import index from "@renderer/views/Index.vue"
 import landingpage from "@renderer/views/landing-page/landing-page.vue"
+import dashboard from "@renderer/views/Dashboard/dashboard.vue"
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/search',
     name: 'search',
     component: search,
+    props: (route) => ({ query: route.query.q,id:route.query.id }), 
+  },{
+    path: '/dashboard',
+    name: 'dashboard',
+    component: dashboard,
     props: (route) => ({ query: route.query.q,id:route.query.id }), 
   },
   {

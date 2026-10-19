@@ -56,8 +56,17 @@ export const getdetailData = async (id:string) => {
       params: { id }, 
     });
     return response.data; 
-    // console.log(id)
-    // return true;
+  } catch (error) {
+    console.error("搜索请求失败", error);
+    throw new Error("搜索操作失败");
+  }
+};
+//获取首页化合物信息和反应数量
+export const getCountData = async (id:string) => {
+  try {
+    const response = await apiClient.get("/recordcount");
+    console.log("获取首页化合物信息和反应数量",response.data)
+    return response.data; 
   } catch (error) {
     console.error("搜索请求失败", error);
     throw new Error("搜索操作失败");

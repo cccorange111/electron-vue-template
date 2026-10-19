@@ -262,8 +262,8 @@ onMounted(() => {
       })
       .then((RDKit) => {
         console.log('RDKit 加载成功！版本:', RDKit.version())
-        var width = 100
-        var height = 100
+        var width = 200
+        var height = 200
         console.log('debug', data, data.data)
         data.data.forEach((item, index) => {
           const molecule = RDKit.get_mol(item.smiles)

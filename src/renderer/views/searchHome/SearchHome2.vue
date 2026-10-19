@@ -243,8 +243,8 @@ const _searchLiterature = async () => {
 <style scoped lang="scss">
 .search-container {
   background-image: url('@renderer/assets/background2.jpg');
-  background-position: center bottom 20%;  /* 关键修改：将背景图片下移20% */
-  background-size: 100% auto;  /* 保持宽度100%，高度自适应 */
+  background-position: center 30; 
+  background-size: 100% auto;          /* 宽度100%，高度自适应 */
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
@@ -253,6 +253,7 @@ const _searchLiterature = async () => {
   gap: 20px;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 /* CAS 搜索模式样式 */

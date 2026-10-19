@@ -135,7 +135,12 @@ function startElectron() {
     args = args.concat(process.argv.slice(2))
   }
 
-  electronProcess = spawn(electron as any, args)
+  const electronEnv = { ...process.env }
+  delete electronEnv.ELECTRON_RUN_AS_NODE
+
+  electronProcess = spawn(electron as any, args, {
+    env: electronEnv,
+  })
 
   electronProcess.stdout?.on('data', (data: string) => {
     electronLog(removeJunk(data), 'blue')
